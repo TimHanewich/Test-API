@@ -5,8 +5,12 @@ app = Flask("my_api")
 @app.route('/hello', methods=['GET', 'POST'])
 def hello():
     if request.method == 'POST':
-        data = request.json
-        return jsonify(message=f"Received POST data: {data}")
+        data:str = request.get_data(as_text=True)
+        r = Response()
+        r.status = 200
+        r.set_data("I got this from you: '" + data + "'")
+        r.headers["Content-Type"] = "text/plain"
+        return r
     elif request.method == 'GET':
         r = Response()
         r.status = 200
