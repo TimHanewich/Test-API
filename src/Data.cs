@@ -7,13 +7,13 @@ using TestAPI;
 namespace MyNamespace.Controllers
 {
     [ApiController]
-    [Route("hi")]
-    public class SayHi : ControllerBase
+    [Route("data")]
+    public class Data : ControllerBase
     {
 
         private DataStore _ds; //storing it locally here and using it throughout the class (it persists across multiple calls)
 
-        public SayHi(DataStore ds) //the common value, the DataStore, that was registered as a singleton, is provided to each controller in its constructor
+        public Data(DataStore ds) //the common value, the DataStore, that was registered as a singleton, is provided to each controller in its constructor
         {
             _ds = ds;
         }
