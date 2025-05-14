@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace MyNamespace.Controllers
 {
@@ -7,9 +8,11 @@ namespace MyNamespace.Controllers
     public class SayHi : ControllerBase
     {
         [HttpGet]
-        public IActionResult Get()
+        public async Task Get()
         {
-            return Ok("Hello! Thanks for the GET request!");
+            Response.StatusCode = 200;
+            Response.Headers.Append("Content-Type", "application/json");
+            await Response.WriteAsync("{\"name\": \"tim\"}");
         }
 
         [HttpPost]
