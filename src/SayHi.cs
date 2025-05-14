@@ -11,9 +11,9 @@ namespace MyNamespace.Controllers
     public class SayHi : ControllerBase
     {
 
-        private DataStore _ds;
+        private DataStore _ds; //storing it locally here and using it throughout the class (it persists across multiple calls)
 
-        public SayHi(DataStore ds)
+        public SayHi(DataStore ds) //the common value, the DataStore, that was registered as a singleton, is provided to each controller in its constructor
         {
             _ds = ds;
         }
